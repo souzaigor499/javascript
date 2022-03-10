@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        body{
+            background-color: rgb(115, 141, 224);
+            color: white;
+            font: normal 15pt arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciando estudos com DOM</h1>
+    <p>aqui vai o resultado</p>
+    <p>Aprendendo a usar o <strong>DOM</strong> em JavaScript</p>
+    <div id="msg">clique aqui</div>
+    <div name="msga"></div>
+    
+    <script>
+        var p1 = document.getElementsByTagName('p')[1]
+        document.write(`Está escrtito assim: ${p1.innerText}<br/>`)
+        document.write(p1.innerHTML)
+        var d = document.getElementById('msg')
+        var f = document.querySelector('[name=msga]')
+        d.style.background = 'green'
+        d.innerText = 'Estou aguardando...'
+        f.innerText =' ola'
+        f.style.background='lightblue'
+        //window.document.write(window.document.charset) 
+        //window.document.write(window.navigator.appName)
+        //document.getElementsByTagName()
+        //document.getElementById
+        //document.getElementsByName
+        //document.getElementsByClassName
+        //var f = document.querySelector('div#msg')
+    </script>
+</body>
+</html>
