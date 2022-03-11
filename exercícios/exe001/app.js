@@ -10,6 +10,7 @@ function carregar(){
     if(hora < 10){
         hora = '0' + hora
     }
+
     msg.innerHTML = `Agora são ${hora}:${minutos}<br/>`
     if (hora >= 0  && hora < 12){
         //bom dia
