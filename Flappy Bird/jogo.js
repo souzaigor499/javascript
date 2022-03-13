@@ -33,10 +33,7 @@ const planoDeFundo ={
             (planoDeFundo.x + planoDeFundo.largura), planoDeFundo.y,
             planoDeFundo.largura, planoDeFundo.altura,
         )
-
     }
-    
-
 }
 
 // Chão
@@ -68,6 +65,19 @@ const Chao =  {
     }
 }
 
+function fazColisao(FlappyBird, Chao){
+    const FlappyBirdY = FlappyBird.y + FlappyBird.altura 
+    const ChaoY = Chao.y
+    if(FlappyBirdY >= ChaoY){
+        return true
+    }
+    return false
+
+}
+
+
+
+
 const FlappyBird = { 
     spriteX: 0,
     spriteY: 0,
@@ -75,9 +85,21 @@ const FlappyBird = {
     altura: 24,
     x: 10,
     y: 50,
+    pulo: 4.6,
+    pula(){
+        FlappyBird.velocidade = - FlappyBird.pulo
+    },
     gravidade: 0.25,
     velocidade: 0,
     atualiza(){
+        if(fazColisao(FlappyBird, Chao)){
+            console.log('Fez colisao')
+            mudaParaTela(Telas.INICIO)
+            
+            return
+            
+            
+        }
         FlappyBird.velocidade = FlappyBird.velocidade + FlappyBird.gravidade
         FlappyBird.y = FlappyBird.y + FlappyBird.velocidade
         
@@ -147,6 +169,9 @@ Telas.JOGO = {
     Chao.desenha()
     FlappyBird.desenha()
     },
+    click(){
+        FlappyBird.pula()
+    },
     atualiza(){
         FlappyBird.atualiza()
     }
@@ -157,7 +182,7 @@ Telas.JOGO = {
 function loop(){
     telaAtiva.desenha()
     telaAtiva.atualiza()
-
+    
 
     requestAnimationFrame(loop)
     
