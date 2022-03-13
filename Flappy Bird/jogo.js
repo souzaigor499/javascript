@@ -1,5 +1,8 @@
 console.log('Flappy Bird')
 
+const som_HIT = new Audio()
+som_HIT.src = 'efeitos/hit.wav'
+
 const sprites = new Image()
 sprites.src = 'sprites.png'
 
@@ -77,44 +80,52 @@ function fazColisao(FlappyBird, Chao){
 
 
 
-
-const FlappyBird = { 
-    spriteX: 0,
-    spriteY: 0,
-    largura: 34,
-    altura: 24,
-    x: 10,
-    y: 50,
-    pulo: 4.6,
-    pula(){
-        FlappyBird.velocidade = - FlappyBird.pulo
-    },
-    gravidade: 0.25,
-    velocidade: 0,
-    atualiza(){
-        if(fazColisao(FlappyBird, Chao)){
-            console.log('Fez colisao')
-            mudaParaTela(Telas.INICIO)
+function criaFlappyBird(){
+    const FlappyBird = { 
+        spriteX: 0,
+        spriteY: 0,
+        largura: 34,
+        altura: 24,
+        x: 10,
+        y: 50,
+        pulo: 4.6,
+        pula(){
+            FlappyBird.velocidade = - FlappyBird.pulo
+        },
+        gravidade: 0.25,
+        velocidade: 0,
+        atualiza(){
+            if(fazColisao(FlappyBird, Chao)){
+                console.log('Fez colisao')
+                som_HIT.play()
+                setTimeout(() =>{
+                    mudaParaTela(Telas.INICIO)
+                }, 500)
+                
+                
+                
+                return
+                
+                
+            }
+            FlappyBird.velocidade = FlappyBird.velocidade + FlappyBird.gravidade
+            FlappyBird.y = FlappyBird.y + FlappyBird.velocidade
             
-            return
-            
-            
+        },
+        desenha(){
+            contexto.drawImage(
+                sprites,
+                FlappyBird.spriteX, FlappyBird.spriteY, // Sprite x, Sprite y
+                FlappyBird.largura, FlappyBird.altura, // Tamanho do recorte da Sprite
+                FlappyBird.x, FlappyBird.y, // Posição dentro do Canvas
+                FlappyBird.largura, FlappyBird.altura// Tamanho dentro do Canvas
+                )
+    
         }
-        FlappyBird.velocidade = FlappyBird.velocidade + FlappyBird.gravidade
-        FlappyBird.y = FlappyBird.y + FlappyBird.velocidade
-        
-    },
-    desenha(){
-        contexto.drawImage(
-            sprites,
-            FlappyBird.spriteX, FlappyBird.spriteY, // Sprite x, Sprite y
-            FlappyBird.largura, FlappyBird.altura, // Tamanho do recorte da Sprite
-            FlappyBird.x, FlappyBird.y, // Posição dentro do Canvas
-            FlappyBird.largura, FlappyBird.altura// Tamanho dentro do Canvas
-            )
-
     }
+    return FlappyBird
 }
+
 
 // Mensagem Get Ready
 
@@ -138,17 +149,26 @@ const mensagemGetReady = {
 }
 
 //Telas
+const globais = {}
 let telaAtiva = {}
 function mudaParaTela(novaTela){
     telaAtiva = novaTela
+    if(telaAtiva.inicializa){
+    telaAtiva.inicializa()    
+    }
+
+    
 
 }
 const Telas = {
     INICIO: {
+        inicializa(){
+                globais.FlappyBird = criaFlappyBird()
+        },
         desenha(){
             planoDeFundo.desenha()
             Chao.desenha()
-            FlappyBird.desenha()
+            globais.FlappyBird.desenha()
             mensagemGetReady.desenha()
         },
 
@@ -167,13 +187,13 @@ Telas.JOGO = {
     desenha(){
     planoDeFundo.desenha()
     Chao.desenha()
-    FlappyBird.desenha()
+    globais.FlappyBird.desenha()
     },
     click(){
-        FlappyBird.pula()
+        globais.FlappyBird.pula()
     },
     atualiza(){
-        FlappyBird.atualiza()
+        globais.FlappyBird.atualiza()
     }
 }
 
