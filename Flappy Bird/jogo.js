@@ -1,7 +1,7 @@
 console.log('Flappy Bird')
 
 const som_HIT = new Audio()
-som_HIT.src = 'efeitos/hit.wav'
+som_HIT.src = 'efeitos/efeitos_hit.wav'
 
 const sprites = new Image()
 sprites.src = 'sprites.png'
