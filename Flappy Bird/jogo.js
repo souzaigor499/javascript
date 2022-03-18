@@ -7,37 +7,53 @@ som_HIT.src = 'efeitos/efeitos_hit.wav'
 const sprites = new Image()
 sprites.src = 'sprites.png'
 
-const canvas = document.querySelector('canvas#game-canvas')
+const canvas = document.getElementById('game-canvas')
 const contexto = canvas.getContext('2d')
 
 // Plano de fundo
 
-const planoDeFundo ={
-    spriteX: 390,
-    spriteY: 0,
-    largura: 275,
-    altura: 204,
-    x: 0,
-    y: canvas.height - 204,
-    desenha() {
-        contexto.fillStyle = '#70c5ce'
-        contexto.fillRect(0,0, canvas.width, canvas.height)
-        contexto.drawImage(
-            sprites,
-            planoDeFundo.spriteX, planoDeFundo.spriteY,
-            planoDeFundo.largura, planoDeFundo.altura,
-            planoDeFundo.x, planoDeFundo.y,
-            planoDeFundo.largura, planoDeFundo.altura,
-        )
+function criaPlanoDeFundo(){
+    const planoDeFundo ={
+        spriteX: 390,
+        spriteY: 0,
+        largura: 276,
+        altura: 204,
+        x: 0,
+        y: canvas.height - 204,
+        atualiza(){
+            const movimentoDoChao = 0.2
+            const repeteEm = planoDeFundo.largura / 2
+            const movimentacao = planoDeFundo.x - movimentoDoChao
+            planoDeFundo.x = movimentacao % repeteEm - 0.01
+            
 
-        contexto.drawImage(
-            sprites,
-            planoDeFundo.spriteX, planoDeFundo.spriteY,
-            planoDeFundo.largura, planoDeFundo.altura,
-            (planoDeFundo.x + planoDeFundo.largura), planoDeFundo.y,
-            planoDeFundo.largura, planoDeFundo.altura,
-        )
+    
+        },
+        desenha() {
+            contexto.fillStyle = '#70c5ce'
+            contexto.fillRect(0,0, canvas.width, canvas.height)
+            contexto.drawImage(
+                sprites,
+                planoDeFundo.spriteX, planoDeFundo.spriteY,
+                planoDeFundo.largura, planoDeFundo.altura,
+                planoDeFundo.x, planoDeFundo.y,
+                planoDeFundo.largura, planoDeFundo.altura,
+            )
+    
+            contexto.drawImage(
+                sprites,
+                planoDeFundo.spriteX, planoDeFundo.spriteY,
+                planoDeFundo.largura, planoDeFundo.altura,
+                (planoDeFundo.x + planoDeFundo.largura) - 0.3, planoDeFundo.y,
+                planoDeFundo.largura, planoDeFundo.altura,
+            )
+
+            
+            
+        },
+        
     }
+    return planoDeFundo
 }
 
 // Chão
@@ -53,7 +69,7 @@ function criaChao(){
             const movimentoDoChao = 1
             const repeteEm = Chao.largura / 2
             const movimentacao = Chao.x - movimentoDoChao
-            Chao.x = movimentacao % repeteEm
+            Chao.x = movimentacao % repeteEm - 1
 
     
         },
@@ -109,12 +125,11 @@ function criaFlappyBird(){
         velocidade: 0,
         atualiza(){
             if(fazColisao(FlappyBird, globais.Chao)){
-                console.log('Fez colisao')
                 som_HIT.play()
                 
-                setTimeout(() =>{
-                    mudaParaTela(Telas.INICIO)
-                }, 500)
+                
+                    mudaParaTela(Telas.GAME_OVER)
+                
                 return  
             }
             FlappyBird.velocidade = FlappyBird.velocidade + FlappyBird.gravidade
@@ -136,7 +151,7 @@ function criaFlappyBird(){
                 const baseRepeticao = FlappyBird.movimentos.length
                 FlappyBird.frameAtual =  incremento % baseRepeticao
             }
-            console.log(frames)
+            
             
         },
         desenha(){
@@ -176,6 +191,171 @@ const mensagemGetReady = {
         )
     }
 }
+//Mensagem game over
+
+const mensagemGameOver = {
+    sX: 134,
+    sY: 153,
+    w: 226,
+    h: 200, 
+    x: (canvas.width / 2) - 226 / 2,
+    y: 50,
+    desenha(){
+        
+        contexto.drawImage(
+            sprites,
+            mensagemGameOver.sX, mensagemGameOver.sY,
+            mensagemGameOver.w, mensagemGameOver.h,
+            mensagemGameOver.x, mensagemGameOver.y,
+            mensagemGameOver.w, mensagemGameOver.h
+
+        )
+    }
+}
+
+function criaCanos(){
+    const Canos = {
+        largura: 52,
+        altura: 400,
+        chao: {
+            spriteX: 0,
+            spriteY: 169,
+        },
+        ceu: {
+            spriteX: 52,
+            spriteY: 169,
+        },
+        espaco: 80,
+        desenha() {
+            Canos.pares.forEach(function(par){
+            const yRandom = par.y
+            const espacamentoEntreCanos = 90
+            const canoCeuX = par.x
+            const canoCeuY = yRandom
+            
+                // [Cano do ceu]
+            contexto.drawImage(
+                sprites,
+                Canos.ceu.spriteX, Canos.ceu.spriteY,
+                Canos.largura, Canos.altura,
+                canoCeuX, canoCeuY,
+                Canos.largura, Canos.altura,
+            )
+            const canoChaoX = par.x
+            const canoChaoY = Canos.altura + espacamentoEntreCanos + yRandom
+            // [Cano do chão]
+            contexto.drawImage(
+                sprites,
+                Canos.chao.spriteX, Canos.chao.spriteY,
+                Canos.largura, Canos.altura,
+                canoChaoX, canoChaoY,
+                Canos.largura, Canos.altura,
+            )
+            par.canoCeu = {
+                x: canoCeuX,
+                y: Canos.altura + canoCeuY
+            }
+            par.canoChao = {
+                x: canoChaoX,
+                y: canoChaoY
+            }
+
+            })
+            
+        },
+        temColisaoComOFlappyBird(par){
+            const cabecaDoFlappy = globais.FlappyBird.y
+            const peDoFlappy = globais.FlappyBird.y + globais.FlappyBird.altura
+            if((globais.FlappyBird.x + globais.FlappyBird.largura) - 3 >= par.x){
+                if(cabecaDoFlappy <= par.canoCeu.y){
+                    return true
+                }
+                if(peDoFlappy >= par.canoChao.y){
+                    return true       
+                }
+            }      
+            return false
+        },
+        pares : [],
+        atualiza(){
+            const passou100Frames = frames % 100 === 0
+            if(passou100Frames) {
+                console.log('passou 100 frames')
+                Canos.pares.push({
+                    x: canvas.width,
+                    y: -150 * (Math.random() + 1),
+                })
+            }
+            Canos.pares.forEach(function(par){
+                par.x = par.x -2
+
+                if(Canos.temColisaoComOFlappyBird(par)){
+                    console.log('voce perdeu')
+                    som_HIT.play()
+                    mudaParaTela(Telas.GAME_OVER)
+
+                }
+
+                if(par.x + Canos.largura <= 0 ){
+                    Canos.pares.shift()
+                }
+            })
+
+        }
+    }
+    return Canos
+}
+
+function criaPlacar(){
+    const placar = {
+        pontuacao: 0,
+        desenha(){
+            contexto.font ='35px "VT323"'
+            contexto.textAlign = 'right'
+            contexto.fillStyle ='White'
+            contexto.fillText(`${placar.pontuacao}`, canvas.width - 10, 35)
+            
+        },
+        desenhaResultado(){
+            contexto.font ='35px "VT323"'
+            contexto.textAlign = 'right'
+            contexto.fillStyle ='#F4EEA5'
+            contexto.fillText(`${placar.pontuacao}`, canvas.width - 80, 150)
+            contexto.font ='35px "VT323"'
+            contexto.textAlign = 'right'
+            contexto.fillStyle ='#D7A84C'
+            contexto.fillText(`${placar.pontuacao}`, canvas.width - 80, 148)
+            
+            
+        },
+        
+        desenhaMelhorResultado(){
+            const melhorPontuacao = placar.pontuacao
+            if(placar.pontuacao > melhorPontuacao){
+                contexto.font ='35px "VT323"'
+                contexto.textAlign = 'right'
+                contexto.fillStyle ='#D7A84C'
+                contexto.fillText(`${placar.pontuacao}`, canvas.width - 80, 178)
+
+            }
+            
+            
+        },
+        atualiza(){
+            const intervaloDeFrames = 60
+            const passouOIntervalo = frames % intervaloDeFrames === 0
+            if(passouOIntervalo){
+                placar.pontuacao++
+            }
+            
+
+        },
+
+    }
+    return placar
+}
+
+
 
 //Telas
 const globais = {}
@@ -192,11 +372,14 @@ function mudaParaTela(novaTela){
 const Telas = {
     INICIO: {
         inicializa(){
+            globais.planoDeFundo = criaPlanoDeFundo()
                 globais.FlappyBird = criaFlappyBird()
                 globais.Chao = criaChao()
+                globais.Canos = criaCanos()
         },
         desenha(){
-            planoDeFundo.desenha()
+            globais.planoDeFundo.desenha()
+            globais.Canos.desenha()
             globais.Chao.desenha()
             globais.FlappyBird.desenha()
             mensagemGetReady.desenha()
@@ -208,6 +391,8 @@ const Telas = {
 
         atualiza(){
             globais.Chao.atualiza()
+            globais.planoDeFundo.atualiza()
+            
             
         }
     }
@@ -215,20 +400,44 @@ const Telas = {
 }
 
 Telas.JOGO = {
+    inicializa(){
+        globais.placar = criaPlacar()
+    },
     desenha(){
-    planoDeFundo.desenha()
+    globais.planoDeFundo.desenha()
+    globais.Canos.desenha()
     globais.Chao.desenha()
     globais.FlappyBird.desenha()
+    globais.placar.desenha()
+    
     },
     click(){
         globais.FlappyBird.pula()
     },
     atualiza(){
+        globais.planoDeFundo.atualiza()
         globais.FlappyBird.atualiza()
+        globais.Canos.atualiza()
         globais.Chao.atualiza()
+        globais.placar.atualiza()
+        
+        
     }
 }
 
+    Telas.GAME_OVER = {
+        desenha(){
+            mensagemGameOver.desenha()
+            globais.placar.desenhaResultado()
+            globais.placar.desenhaMelhorResultado()
+        },
+        atualiza(){
+
+        },
+        click(){
+            mudaParaTela(Telas.INICIO)
+        }
+    }
 
 
 function loop(){
