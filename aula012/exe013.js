@@ -1,6 +1,6 @@
 var agora = new Date()
-var diaSem = agora.getDay()
-/*
+var ()
+/*diaSem = agora.getDay
 0 = Domingo
 1 = Segunda
 2 = Terça
