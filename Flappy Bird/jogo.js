@@ -309,6 +309,7 @@ function criaCanos(){
 function criaPlacar(){
     const placar = {
         pontuacao: 0,
+        melhorPontuacao: 0,
         desenha(){
             contexto.font ='35px "VT323"'
             contexto.textAlign = 'right'
@@ -327,20 +328,35 @@ function criaPlacar(){
             contexto.fillText(`${placar.pontuacao}`, canvas.width - 80, 148)
             
             
+            
+        },
+         atualizaMelhorResultado(){
+            for (placar.melhorPontuacao; placar.pontuacao > placar.melhorPontuacao; placar.melhorPontuacao = placar.pontuacao){
+
+            }
+             
         },
         
+
         desenhaMelhorResultado(){
-            const melhorPontuacao = placar.pontuacao
-            if(placar.pontuacao > melhorPontuacao){
+
+                contexto.font ='35px "VT323"'
+                contexto.textAlign = 'right'
+                contexto.fillStyle ='#F4EEA5'
+                contexto.fillText(`${placar.melhorPontuacao}`, canvas.width - 80, 190)
                 contexto.font ='35px "VT323"'
                 contexto.textAlign = 'right'
                 contexto.fillStyle ='#D7A84C'
-                contexto.fillText(`${placar.pontuacao}`, canvas.width - 80, 178)
+                contexto.fillText(`${placar.pontuacao}`, canvas.width - 80, 188)
+                console.log(`${placar.melhorPontuacao}`)
+            
+            
 
-            }
+
             
-            
+
         },
+       
         atualiza(){
             const intervaloDeFrames = 60
             const passouOIntervalo = frames % intervaloDeFrames === 0
@@ -354,6 +370,10 @@ function criaPlacar(){
     }
     return placar
 }
+
+
+
+
 
 
 
@@ -430,8 +450,11 @@ Telas.JOGO = {
             mensagemGameOver.desenha()
             globais.placar.desenhaResultado()
             globais.placar.desenhaMelhorResultado()
+            
+            
         },
         atualiza(){
+            globais.placar.atualizaMelhorResultado()
 
         },
         click(){
