@@ -1,5 +1,6 @@
 let num  = [5, 8, 2 , 9, 3]
 num.push(1)
+num.push(99)
 //num[5]= 7 alterar determinado indice
 //num.push(12) ultima casa
 //nu.length número de elementos

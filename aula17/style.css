@@ -1,0 +1,48 @@
+*{
+    padding: 0px;
+    margin:  0px;
+}
+
+body{
+    background: rgba(0, 119, 255, 0.562);
+    font: normal 15pt Arial;
+}
+h1 {
+    color: white;
+    padding-top: 80px;
+    padding-bottom: 30px;
+    text-align: center;
+    
+}
+#flista{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 150px;
+}
+select{
+    padding: 3px;
+}
+
+#resultado{
+    font-weight: normal;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.quadro{
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 7px;
+    margin: auto;
+    width: 500px;
+    background: white;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.336);
+
+}
+
+footer{
+    padding-top: 14px;
+    color: white;
+    text-align: center;
+    font-style: italic;
+}
