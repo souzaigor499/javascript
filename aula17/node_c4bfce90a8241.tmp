@@ -1,0 +1,2 @@
+let arroz = 'bom'
+console.log(arroz)
