@@ -49,6 +49,9 @@ button{
     transition: all ease 0.3s;
 }
 
+#deletar{
+    background-color: red;
+}
 button:hover{
     background-color: #532009;
 }
@@ -82,4 +85,8 @@ table td img{
 
 .center{
     text-align: center;
+}
+
+.padding{
+    padding-right: 6px;
 }

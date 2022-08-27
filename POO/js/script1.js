@@ -1,18 +1,120 @@
 class Produto{
 
     constructor() {
-        this.id = 0;
-        this.nomeProduto = '';
-        this.valor = 0;
+        this.id = 1
+        this.arrayProdutos = []
         
     }
 
-    adicionar() {
-        alert('Vamos adicionar um produto')
+    salvar() {
+        let produto = this.lerDados()
+
+        if(this.validaCampo(produto)){
+            this.adicionar(produto)
+            this.cancelar()
+            console.log(this.arrayProdutos)
+
+        }
+        this.listaTabela()
+        
+        
     }
 
-    excluir() {
-        alert('Item deletado')
+    adicionar(produto){
+        this.arrayProdutos.push(produto)
+        this.id++
+
+    }
+
+    listaTabela() {
+        let tbody = document.getElementById('tbody')
+        tbody.innerText = ''
+        for(let i = 0; i < this.arrayProdutos.length; i++){
+            
+            let tr = tbody.insertRow()
+
+            let td_id = tr.insertCell()
+            let td_nome = tr.insertCell()
+            let td_valor = tr.insertCell()
+            let td_acao = tr.insertCell()
+            
+            td_id.innerText = this.arrayProdutos[i].id
+            td_nome.innerText = this.arrayProdutos[i].nomeProduto
+            td_valor.innerText = this.arrayProdutos[i].valor
+            
+            
+            td_id.classList.add('center')
+
+            let imgEdit = document.createElement('img')
+            imgEdit.classList.add('padding')
+            imgEdit.src = 'images/editar.png'
+            
+            let imgExcluir = document.createElement('img')
+            imgExcluir.src = 'images/excluir.png'
+            imgExcluir.setAttribute("onclick","produto.deletar("+this.arrayProdutos[i].id+")")
+
+            td_acao.classList.add('center')
+            td_acao.appendChild(imgEdit)
+            td_acao.appendChild(imgExcluir)
+            
+            
+            
+
+
+        }
+    }
+
+    lerDados() {
+        let produto = {}
+
+        produto.id = this.id
+        produto.nomeProduto = document.getElementById('produto').value
+        produto.valor = document.getElementById('valor').value
+
+        return produto
+    } 
+
+    validaCampo(produto) {
+        let msg = ''
+        if(produto.nomeProduto == ''){
+            msg += ' - Informe o nome do produto \n'
+        }
+
+        if(produto.valor == ''){
+            msg += ' - Informe o valor do produto \n'
+        }
+
+        if(msg != ''){
+            alert(msg)
+            return false
+        }
+        return true
+    }
+
+    cancelar() {
+        document.getElementById('produto').value = ''
+        document.getElementById('valor').value = ''
+        
+    }
+
+    deletar(id){
+        if(confirm('Deseja realmente deletar o produto de ID' + id)){
+            let tbody = document.getElementById('tbody')
+
+        for(let i = 0; i < this.arrayProdutos.length; i++){
+            if(this.arrayProdutos[i].id == id){
+                this.arrayProdutos.splice(i, 1)
+                tbody.deleteRow(i)
+                console.log(i)
+                
+                
+
+            }
+        }
+        }
+        
+        console.log(this.arrayProdutos)
+
     }
 
 }
