@@ -3,6 +3,7 @@ class Produto{
     constructor() {
         this.id = 1
         this.arrayProdutos = []
+        this.editId = null
         
     }
 
@@ -10,21 +11,22 @@ class Produto{
         let produto = this.lerDados()
 
         if(this.validaCampo(produto)){
-            this.adicionar(produto)
-            this.cancelar()
-            console.log(this.arrayProdutos)
+            if(this.editId == null){
+                this.adicionar(produto)
+                this.cancelar()
+            }else{
+                this.atualizar(this.editId, produto)
+            }
+
 
         }
         this.listaTabela()
+        console.log(this.arrayProdutos)
         
         
     }
 
-    adicionar(produto){
-        this.arrayProdutos.push(produto)
-        this.id++
-
-    }
+    
 
     listaTabela() {
         let tbody = document.getElementById('tbody')
@@ -48,6 +50,7 @@ class Produto{
             let imgEdit = document.createElement('img')
             imgEdit.classList.add('padding')
             imgEdit.src = 'images/editar.png'
+            imgEdit.setAttribute("onclick","produto.preparaEdicao("+ JSON.stringify(this.arrayProdutos[i])+")")
             
             let imgExcluir = document.createElement('img')
             imgExcluir.src = 'images/excluir.png'
@@ -59,9 +62,39 @@ class Produto{
             
             
             
+            
 
 
         }
+        document.getElementById('btn1').innerText = 'Salvar'
+        this.cancelar()
+        this.editId = null
+    }
+
+    adicionar(produto){
+        produto.valor = parseFloat(produto.valor)
+        this.arrayProdutos.push(produto)
+        this.id++
+
+    }
+
+    atualizar(id, produto){
+        for(let i = 0; i < this.arrayProdutos.length; i++){
+            if(this.arrayProdutos[i].id == id){
+                this.arrayProdutos[i].nomeProduto = produto.nomeProduto
+                this.arrayProdutos[i].valor = produto.valor
+            }
+    }
+}
+
+    preparaEdicao(dados){
+        this.editId = dados.id
+
+        document.getElementById('produto').value = dados.nomeProduto
+        document.getElementById('valor').value = dados.valor
+
+        document.getElementById('btn1').innerText = 'Atualizar'
+
     }
 
     lerDados() {
