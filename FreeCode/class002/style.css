@@ -1,0 +1,82 @@
+
+
+body{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    height: 100vh;
+    
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    background: radial-gradient(circle, rgba(5,87,44,1) 23%, rgba(5,87,44,1) 40%, rgba(4,61,31,1) 84%);
+}
+h1{
+    
+    color :#d89a21;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.144);
+    font-size: 70px;
+}
+
+p{
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.144);
+    font-size: 35px;
+    font-weight: bold;
+
+}
+
+#message-el{
+    
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.144);
+    font-size: 35px;
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+.startGame{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 10px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #016f32;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.144);
+    width: 180px;
+    height: 50px;
+    background: goldenrod;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.144);
+    transition: 80ms;
+    padding: 5px 0px 5px 0px;
+}
+
+
+.startGame:active{
+    transform: scale(.90);
+    
+}
+#comprar:active{
+    transform: scale(.90);
+    
+}
+
+#comprar{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+    font-size: 35px;
+    font-weight: bold;
+    color: #016f32;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.144);
+    margin-top: 5px;
+    width: 340px;
+    height: 50px;
+    background: goldenrod;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.144);
+    transition: 80ms;
+    padding: 5px 0px 5px 0px;
+}

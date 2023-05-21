@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif; 
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    min-width: 400px;
+}
+
+#input-el{
+    padding: 10px;
+    border: 1px solid #5f9341;
+    margin-bottom: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+
+
+
+#input-btn{
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: large;
+    color: white;
+    background-color: #5f9341;
+    border: none;
+}
+
+.unlist{
+    margin-top: 20px;
+    font-size: large;
+    font-weight: normal;
+    padding: 0px;
+    list-style-type: none;
+}
+.list{
+    margin-top: 5px;
+}
+.link{
+    
+    color: #5f9341;
+}
+
+
+
