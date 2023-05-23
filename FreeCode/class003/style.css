@@ -24,8 +24,29 @@ body{
     padding: 10px 20px;
     font-size: large;
     color: white;
+    border: 1px solid #5f9341;
     background-color: #5f9341;
     border: none;
+}
+
+#tab-btn{
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: large;
+    color: white;
+    border: 1px solid #5f9341;
+    background-color: #5f9341;
+    border: none;
+}
+
+
+#delete-btn{
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: large;
+    color: #5f9341;
+    background-color: white;
+    border: 1px solid #5f9341;
 }
 
 .unlist{

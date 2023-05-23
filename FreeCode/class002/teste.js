@@ -121,9 +121,21 @@
 
 // jogar()
 
-const recipient = "James"
+// const recipient = "James"
 
-const email = `Hey, 
-${recipient}! 
-How is it going?`
-console.log(email)
+// const email = `Hey, 
+// ${recipient}! 
+// How is it going?`
+// console.log(email)
+
+// console.log(Boolean("")) // false
+// console.log(Boolean("0"))// true
+// console.log(Boolean(100))// true
+// console.log(Boolean(null))// false
+// console.log(Boolean([0]))// true
+// console.log(Boolean(-0))// false
+
+function soma(a,b){
+    return a + b
+}
+console.log(soma(1,2))
