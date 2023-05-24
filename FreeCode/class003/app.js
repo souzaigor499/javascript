@@ -5,20 +5,27 @@ const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEL = document.getElementById("ul-el")
+ulEL.className = "unlist"
 const delBtn = document.getElementById("delete-btn")
 const tabBtn = document.getElementById("tab-btn")
 
-const tabs = [{url: "https://www.google.com"}]
+
+
 renderLocal()
 
 tabBtn.addEventListener("click", function(){
-    
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
     myLead.push(tabs[0].url)
     localStorage.setItem("myLeads", JSON.stringify(myLead))
     ulEL.textContent = ""
     render(myLead)
+    })
+    
+    
+    
+    
 })
-ulEL.className = "unlist"
+
 
 function renderLocal(){
 if(leadsFromLocalStorage){
