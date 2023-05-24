@@ -135,7 +135,59 @@
 // console.log(Boolean([0]))// true
 // console.log(Boolean(-0))// false
 
-function soma(a,b){
-    return a + b
+// function soma(a,b){
+//     return a + b
+// }
+// console.log(soma(1,2))
+
+
+//PLAYING
+
+// const player = "igor"
+// const opponent = "mario"
+// const game = "Amazing Fighter"
+
+// let points = 0
+// let hasWon = false
+
+// //PLAYING THE GAME
+// points += 100
+// hasWon = true
+
+// if(hasWon){
+//     console.log(`${player} tem ${points} e ganhou o ${game} game!`)
+
+// }else {
+//     console.log(`O vencender é ${opponent}! ${player} perdeu o jogo`)
+// }
+
+// let myCourses = ["Aprenda animações CSS", "Fundamentos de Desings UI",
+//  "Intro ao Clean Code"]
+
+//  function logArray(array){
+//     for(let i in array){
+//         console.log(array[i])
+//     }
+//  }
+
+//  logArray(myCourses)
+
+let countries = ["China", "India", "USA"]
+
+function generatingSetence(desc, array){
+    let baseString = `The ${array.length} ${desc} are `
+    
+    for(let i = 0; i < array.length; i++){
+        if( i === array.length - 1){
+            baseString += array[i]
+        }else{
+            baseString += array[i] + ", "
+        }
+        
+        
+    }
+    console.log(baseString)
 }
-console.log(soma(1,2))
+
+generatingSetence('largest countries', countries)
+generatingSetence("best fruits", ['bananas','maças'])
