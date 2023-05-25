@@ -53,30 +53,30 @@
 
 // OBJECT LITERAL (CHALLENGE)
 
-function newAdressMaker(address){
-    const {city, state} = address
-    const newAdress = {
-        city,
-        state,
-        country: 'Brazil'
-    }
+// function newAdressMaker(address){
+//     const {city, state} = address
+//     const newAdress = {
+//         city,
+//         state,
+//         country: 'Brazil'
+//     }
 
-    console.log(`${newAdress.city}, ${newAdress.state}, ${newAdress.country}`)
-}
+//     console.log(`${newAdress.city}, ${newAdress.state}, ${newAdress.country}`)
+// }
 
-newAdressMaker({city: 'Maua', state: 'Sao Paulo'})
+// newAdressMaker({city: 'Maua', state: 'Sao Paulo'})
 
-function newAdressMaker1(address){
+// function newAdressMaker1(address){
     
-    const newAdress = {
-        city: address.city,
-        state: address.state,
-        country: 'Brazil'
-    }
+//     const newAdress = {
+//         city: address.city,
+//         state: address.state,
+//         country: 'Brazil'
+//     }
 
-    const {city, state, country} = newAdress
+//     const {city, state, country} = newAdress
 
-    console.log(`${city}, ${state}, ${country}`)
-}
+//     console.log(`${city}, ${state}, ${country}`)
+// }
 
-newAdressMaker1({city: 'Maua', state: 'Sao Paulo'})
+// newAdressMaker1({city: 'Maua', state: 'Sao Paulo'})
