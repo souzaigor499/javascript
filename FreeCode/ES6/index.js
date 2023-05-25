@@ -33,3 +33,5 @@
 // let [firstName, lastName, middleName] = ['igor', 'souza', 'soares']
 // lastName = 'santos'
 // console.log(lastName)
+
+//OBJECT LITERAL
