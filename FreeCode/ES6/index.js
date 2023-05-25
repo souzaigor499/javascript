@@ -35,3 +35,48 @@
 // console.log(lastName)
 
 //OBJECT LITERAL
+
+// function adressMaker(city, state){
+//     const newAdress = {newCity: city, newState: state}
+
+//     console.log(newAdress)
+// }
+
+// function adressMaker1(city, state){
+//     const newAdress = {city, state}
+
+//     console.log(newAdress)
+// }
+
+// adressMaker('maua', 'sao paulo')
+// adressMaker1('maua', 'sao paulo')
+
+// OBJECT LITERAL (CHALLENGE)
+
+function newAdressMaker(address){
+    const {city, state} = address
+    const newAdress = {
+        city,
+        state,
+        country: 'Brazil'
+    }
+
+    console.log(`${newAdress.city}, ${newAdress.state}, ${newAdress.country}`)
+}
+
+newAdressMaker({city: 'Maua', state: 'Sao Paulo'})
+
+function newAdressMaker1(address){
+    
+    const newAdress = {
+        city: address.city,
+        state: address.state,
+        country: 'Brazil'
+    }
+
+    const {city, state, country} = newAdress
+
+    console.log(`${city}, ${state}, ${country}`)
+}
+
+newAdressMaker1({city: 'Maua', state: 'Sao Paulo'})
