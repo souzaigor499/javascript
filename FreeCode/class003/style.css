@@ -50,6 +50,13 @@ body{
     border: 1px solid #5f9341;
 }
 
+.excluir{
+    background-color: #934141;
+    color: white;
+    border: 1px solid #934141;
+    margin-left: 10px;
+}
+
 .unlist{
     margin-top: 20px;
     font-size: large;

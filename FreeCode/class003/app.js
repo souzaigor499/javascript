@@ -53,14 +53,29 @@ function render(leads){
             const a = document.createElement("a")
             a.className = "link"
             const li = document.createElement("li")
+            const btnExcluir = document.createElement("button")
+            btnExcluir.className = "excluir"
+            btnExcluir.textContent = "X"
             li.className = "list"
             a.textContent = leads[i]
             a.href = leads[i]
             a.target = "_blank"
             li.appendChild(a)
+            li.appendChild(btnExcluir)
             ulEL.appendChild(li)
             localStorage.setItem("myLeads", JSON.stringify(leads))
-            
+            btnExcluir.addEventListener("click", function deletarItem(){
+                let delItem = leads[i]
+                console.log(delItem)
+                leads.splice(leads.indexOf(leads[i]), 1)
+                console.log(leads)
+                localStorage.clear
+                localStorage.setItem("myLeads", JSON.stringify(leads))
+                ulEL.textContent = ""
+                render(leads)
+                
+
+            })
             }
         console.log(leads)
 }
@@ -75,6 +90,8 @@ inputBtn.addEventListener("click",function(){
         window.alert("conteudo invalido")
     }
 })
+
+
 
 
 
