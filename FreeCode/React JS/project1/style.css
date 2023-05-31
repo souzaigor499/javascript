@@ -1,0 +1,78 @@
+body, html{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    
+}
+#root{
+    background-color: #282D35;
+    color: white;
+    padding: 0px;
+    
+     
+}
+
+.nav{
+    width: 100%;
+    padding: 10px;
+    background-color: #21222a;
+    color: #DEEBF8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.nav-items{
+    list-style: none;
+    display: flex;
+    font-family: 'Noto Sans', sans-serif;
+    box-sizing: border-box;
+
+
+}
+
+.nav-items > li{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.react-logo{
+    width: 60px;
+}
+
+.un-list{
+    list-style: none;
+}
+
+.un-list li{
+    
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+
+.un-list li::before{
+        content: "•   ";
+        padding-right: 6px;
+        color: #61DAFB ; /* or whatever color you prefer */
+        font-weight: bolder;
+}
+
+.content{
+    padding: 30px 10px;
+    box-shadow: inset 0px 6px 6px -1px rgba(0,0,0,0.29);
+    height: 900px;
+}
+
+.footer{
+    background-color: #21222A;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}

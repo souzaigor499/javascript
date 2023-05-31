@@ -54,6 +54,7 @@ function render(leads){
             a.className = "link"
             const li = document.createElement("li")
             const btnExcluir = document.createElement("button")
+            const btnEditar = document.createElement("button")
             btnExcluir.className = "excluir"
             btnExcluir.textContent = "X"
             li.className = "list"
@@ -61,10 +62,11 @@ function render(leads){
             a.href = leads[i]
             a.target = "_blank"
             li.appendChild(a)
-            li.appendChild(btnExcluir)
+            li.appendChild(btnExcluir)          
             ulEL.appendChild(li)
             localStorage.setItem("myLeads", JSON.stringify(leads))
             btnExcluir.addEventListener("click", function deletarItem(){
+                
                 let delItem = leads[i]
                 console.log(delItem)
                 leads.splice(leads.indexOf(leads[i]), 1)
@@ -74,8 +76,11 @@ function render(leads){
                 ulEL.textContent = ""
                 render(leads)
                 
+                
 
             })
+
+           
             }
         console.log(leads)
 }
