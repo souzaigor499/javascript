@@ -1,0 +1,76 @@
+
+*{
+    box-sizing: border-box;
+}
+
+body, html{
+    font-family: 'Inter', sans-serif;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    
+    
+}
+
+.react-logo{
+    height: 30px;
+}
+
+.navbar{
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 30px 25px;
+    background-color: #21222a;
+
+}
+
+.navbar > h4{
+    color: #DEEBF8;
+    font-weight: 600;
+}
+
+.react-facts{
+    padding-left: 5px;
+    margin-right: auto;
+    color: #61dafb;
+    font-size: 22px;
+    
+}
+
+.content{
+    padding: 60px 30px;
+    background-color: #282d35;
+    background-image: url(images/reactjs-icon\ 2.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+}
+
+.fun-facts{
+    margin: 0px;
+    font-size: 40px;
+    color: white;
+    letter-spacing: -0.05em;
+}
+
+.un-list{
+    
+    margin-top: 46px;
+    
+}
+
+.un-list > li{
+    color: #e4e5e6;
+    line-height: 19px;
+    padding-block: 10px;
+    align-items: center;
+}
+
+.un-list li::marker{
+    font-size: 1.4em;
+    color: #61DAFB ; /* or whatever color you prefer */
+    
+
+    
+}
