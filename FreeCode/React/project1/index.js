@@ -1,4 +1,21 @@
-import Header from "./Header"
+// import React from "react"
+// import ReactDOM from "react-dom"
+// import Header from "./Header"
+
+function Header(){
+    return (
+        <header>
+                <nav className="nav" alt="react-logo">
+                    <img src="./React-icon.svg.png" className="react-logo"></img>
+                   <ul className="nav-items">
+                        <li>Princing</li>
+                        <li>About</li>
+                        <li>Contact</li>
+                   </ul>
+                </nav>
+            </header>
+    )
+}
 
 function Footer(){
     return (
@@ -24,7 +41,7 @@ function MainContent(){
     )
 }
 
-function PageRender(){
+function App(){
     return (
         <div>
             <Header />
@@ -36,4 +53,4 @@ function PageRender(){
         </div>
     )
 }
-ReactDOM.render(<PageRender />, document.getElementById("root"))
+ReactDOM.render(<App />, document.getElementById("root"))
