@@ -8,7 +8,8 @@ body, html{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    
+    height: auto;
+    background-color: #282d35;
     
 }
 
