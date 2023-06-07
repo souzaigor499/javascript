@@ -1,0 +1,162 @@
+body{
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding-left: 22px;
+  
+  height: 70px;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.22);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.22);
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.22);
+}
+
+.container{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 7px;
+}
+
+.section1{
+  height: 232px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-top: 50px;
+}
+
+.section2{
+  height: 232px;
+  gap: 7px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.section3{
+  height: 232px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-top: 35px;
+}
+
+.section4{
+  height: 232px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.section5{
+  height: 232px;
+  gap: 7px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.title{
+  padding-left: 36px;
+  margin-top: 0px;
+}
+
+.title h1{
+  margin: 0px;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 110%;
+}
+
+.title p{
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 110%;
+  max-width: 340px;
+}
+
+.main-content *{
+  padding: 0;
+  margin: 0;
+}
+
+.main-content{
+  margin-left: 40px;
+  display: flex;
+  justify-content: start;
+
+  
+}
+
+.content > img{
+  width: 185px
+}
+
+.rating{
+  display: flex;
+  
+}
+.rating img{
+  height: 15px;
+  margin-right: 5px;
+}
+
+.rating p{
+  margin-left: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.country{
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 110%;
+  color: #918E9B;
+}
+
+.p-rating{
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 110%;
+  color: #222222;
+}
+
+.content > h3{
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: #222222;
+}
+
+.price{
+  margin-top: 8px;
+}
+
+
+
+.price {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 110%;
+  color: #918E9B;
+}
+
+.price span{
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 110%;
+  color: #222222;
+}
