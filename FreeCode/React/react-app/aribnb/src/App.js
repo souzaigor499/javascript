@@ -1,3 +1,5 @@
+
+import images from "./images";
 import React from "react";
 import Navbar from "./components/Navbar";
 import Display from "./components/Display";
@@ -5,21 +7,42 @@ import Title from "./components/Title";
 import Card from "./components/Card";
 
 
+import  data  from "./data";
+console.log(data)
+
+
+
+
 export default function App(){
+
+    const dataMap = data.map((item => {
+      return <Card 
+      key={item.id} 
+      {...item}
+      />  
+    }))
+
+    const navbar = images.map((src =>{
+      return <Navbar 
+        {...src}
+      />
+    }))
+
+    const display = images.map((src => {
+      return <Display 
+        {...src}
+      />
+    }))
+
   return (
     <div >
-      <Navbar />
-      {/* <Display /> */}
+      {navbar}
+      {display} 
       <Title />
-      <Card 
-          img = '/static/media/image12.05dcfde48c20d03293a6.png'
-          rating = "5.0"
-          reviewCount = {6}
-          country = "USA"
-          title = "Life lessons with Kate Zaferes"
-          price = {136}
-
-      />
+      <div className="main-content">
+        {dataMap}
+      </div>
+      
     </div>
   )
 }

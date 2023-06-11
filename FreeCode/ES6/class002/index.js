@@ -1,11 +1,33 @@
-//FOR OF LOOP
-// let incomes = [5000, 6000, 7000]
-// let total = 0
+// FOR OF LOOP
+let incomes = [1, 2, 3 ,4 , 5 ,6]
+let newArray = []
 
-// for(const income of incomes){
-//     console.log(income)
-//     total += income
-// }
+for(const income of incomes){
+    const array = new Map()
+    array.set(income, income ** 2)
+    newArray.push(array.get(income))
+    
+}
+// console.log(newArray)
+
+const arrei = incomes.map(function(item){
+    return item ** 2
+})
+// console.log(arrei)
+
+const names = ['igor', 'beto', 'leo', 'gui']
+
+const uppercase = names.map(name => {
+    return name[0].toUpperCase() + name.slice(1)
+})
+console.log(uppercase)
+
+const names1 = ['igor', 'beto', 'leo', 'gui']
+
+const element = names.map(names => '<p>' + names + '</p>'
+)
+
+console.log(element)
 
 // console.log(total)
 
