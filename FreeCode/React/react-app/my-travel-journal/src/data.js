@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default [
     {
         id: '0',
@@ -14,7 +15,8 @@ export default [
         id: '1',
         name: 'Sydney Opera House',
         country:'Australia',
-        date: "The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings",
+        date:'27 May, 2021 - 8 Jun, 2021',
+        about: "The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings",
         img: 'https://source.unsplash.com/JmuyB_LibRo',
         location: 'https://www.google.com/maps/d/u/0/viewer?mid=1NYBTZlF3StQEf65_sVbpMlskCoo&hl=en',
         icon: 'Fill 220.png',

@@ -3,7 +3,7 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: aliceblue;
+  background-color: #42B0F5;
   box-sizing: border-box;
 }
 
@@ -13,6 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin:auto;
+  
   
 
 }
@@ -34,8 +35,8 @@ body {
   line-height: 18px;
   letter-spacing: -0.075em;
   gap: 7px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .main{
@@ -44,26 +45,42 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 40px;
 }
 
 .container{
   display: flex;
+  justify-content: start;
   height: 230px;
   padding-right: 40px;
   padding-left: 40px;
 }
 
+.figure{
+  margin: 0;
+}
+
+.info > *{
+  margin: 0px;
+  padding: 0px;
+}
+
 .info{
   display: flex;
   flex-direction: column;
+  margin-left: 25px;
+  padding-top: 20px;
+  gap: 7px;
 }
 
 .location{
   display: flex;
   align-items: center;
+  padding: 0px;
 }
 
 .location > h4{
+  margin: 0px;
   margin-left: 4px;
   font-style: normal;
   font-weight: 400;
@@ -83,10 +100,30 @@ body {
   margin-left: 5px;
 }
 
+.location > a:hover{
+  text-decoration: none;
+}
+
 .mainImg{
   width: 125px;
   height: 168px;
   object-fit: cover;
   align-items: center;
   border-radius: 6px;
+}
+
+.date{
+ 
+  font-weight: 700;
+  font-size: 10.24px;
+  line-height: 12px;
+
+  color: #2B283A;
+}
+
+.about{
+  font-weight: 00;
+  font-size: 10.24px;
+  line-height: 150%;
+  color: #2B283A;
 }
