@@ -3,14 +3,21 @@ import dataMeme from "../dataMeme"
 
 export default function Meme() {
 
-    const [memeImage, setMemeImage] = React.useState('')
+    const [meme, setMeme] = React.useState({
+        topText: '',
+        bottomText: '',
+        randomImage: "https://i.imgflip.com/30b1gx.jpg"
+    })
+
+    const [allImageMemes, setAllImageMeme] = React.useState(dataMeme)
 
      function getMeme(){
-        const memesArray = dataMeme.data.memes
+        const memesArray = allImageMemes.data.memes
         const randomNumber = Math.floor(Math.random() * memesArray.length)
         console.log(memesArray[randomNumber].url)
         const url = memesArray[randomNumber].url
-        setMemeImage(url)
+        setMeme(prevMeme => ({...meme, randomImage: url})
+        )
      } 
     return (
         <main>
@@ -31,7 +38,7 @@ export default function Meme() {
                     Get a new meme image 🖼
                 </button>
             </div>
-            <img alt='' src={memeImage} className="meme" />
+            <img alt='' src={meme.randomImage} className="meme" />
         </main>
     )
 }
